@@ -14,7 +14,7 @@ class _ContainerNotification_PageState
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 90,
+        //height: 90,
         padding: EdgeInsets.only(bottom: 5),
         margin: EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
@@ -25,7 +25,7 @@ class _ContainerNotification_PageState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Nội dung thông báo\nNội dung thông báo",
+              "Nội dung thông báo\naaaa",
               style: GoogleFonts.inter(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/views/home/components/containerCourse_page.dart';
 
+import 'components/containerCalendar_page.dart';
+import 'components/containerNews.dart';
 import 'components/containerNotification_page.dart';
 import 'components/containerTop.dart';
 
@@ -17,6 +19,7 @@ class _Home_PageState extends State<Home_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             ContainerTop(),
@@ -72,6 +75,7 @@ class _Home_PageState extends State<Home_Page> {
                         ],
                       ),
                     ),
+                    //Thông báo
                     Row(
                       children: [
                         Icon(
@@ -90,11 +94,54 @@ class _Home_PageState extends State<Home_Page> {
                         ),
                       ],
                     ),
+
                     SizedBox(
                       height: 10,
                     ),
                     ContainerNotification_Page(),
                     ContainerNotification_Page(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //Lịch
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          color: Color.fromRGBO(0, 99, 163, 1),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "Lịch",
+                          style: GoogleFonts.inter(
+                              color: Color.fromRGBO(0, 99, 163, 1),
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        InkWell(child: Icon(Icons.arrow_back_ios)),
+                        Text(
+                          "25/04",
+                          style: GoogleFonts.inter(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromRGBO(0, 0, 0, 1)),
+                        ),
+                        InkWell(child: Icon(Icons.arrow_forward_ios)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ContainerCalendar_Page(),
                     SizedBox(
                       height: 10,
                     ),
@@ -145,6 +192,11 @@ class _Home_PageState extends State<Home_Page> {
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ContainerNews_Page(),
+                    ContainerNews_Page(),
                   ],
                 ),
               ),
