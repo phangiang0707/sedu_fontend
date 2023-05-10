@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sedu_fontend/src/views/home/home_page.dart';
 
 import 'class/class_page.dart';
+import 'store/store_page.dart';
 
 class MenuBar_Page extends StatefulWidget {
   const MenuBar_Page({super.key});
@@ -21,10 +22,7 @@ class _MenuBar_PageState extends State<MenuBar_Page> {
       style: optionStyle,
     ),
     Home_Page(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    Store_page(),
     Text(
       'Index 2: School',
       style: optionStyle,

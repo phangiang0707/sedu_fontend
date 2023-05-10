@@ -14,11 +14,17 @@ class _ContainerTopState extends State<ContainerTop> {
     return Container(
       child: Stack(
         children: [
-          Image.asset('images/image1.png'),
+          Container(
+            width: double.infinity,
+            child: Image.asset(
+              'images/image1.png',
+              fit: BoxFit.fill,
+            ),
+          ),
           Positioned(
               child: Container(
-            height: 150,
-            margin: EdgeInsets.all(20),
+            height: 160,
+            padding: EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,

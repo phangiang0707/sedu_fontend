@@ -1,0 +1,21 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sedu_fontend/src/model/otd/courses.otd.dart';
+
+import '../model/otd/detailCourses.otd.dart';
+import '../utils/url.dart';
+import 'package:http/http.dart' as http;
+
+class DetailCourseController {
+  Future<DetailCoursesOtd?> getDetailCourses(String id) async {
+    final response = await http.get(Uri.parse('${url}courses/$id'));
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return detailCoursesOtdFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+}
