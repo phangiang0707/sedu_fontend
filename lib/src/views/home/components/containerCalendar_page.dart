@@ -13,9 +13,11 @@ class _ContainerCalendar_PageState extends State<ContainerCalendar_Page> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      margin: EdgeInsets.only(bottom: 10),
       width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
+          color: Color.fromRGBO(228, 228, 228, 0.2),
           border: Border.all(color: Color.fromRGBO(23, 161, 250, 0.5))),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
