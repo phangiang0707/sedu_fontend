@@ -65,6 +65,7 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
                   "${widget.coursesOtd.name}",
                   style: GoogleFonts.inter(
                       fontSize: 16, fontWeight: FontWeight.w600),
+                  maxLines: 2,
                 ),
                 Container(
                   child: Column(

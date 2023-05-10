@@ -9,6 +9,7 @@ import '../../controller/detailCourses.controller.dart';
 import '../../controller/writemoney.controller.dart';
 import '../../model/otd/detailCourses.otd.dart';
 import '../../utils/url.dart';
+import '../detailsClass/components/listlessonClass_page.dart';
 
 class DetailCourse_page extends StatefulWidget {
   const DetailCourse_page({super.key, required this.id});
@@ -34,6 +35,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
         detailCoursesOtd.toString());
   }
 
+  int isSelect = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -88,27 +90,39 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                   children: [
                                     Expanded(
                                         child: InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {
+                                          isSelect = 0;
+                                        });
+                                      },
                                       child: Text(
                                         "Miêu tả",
                                         style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
-                                            color: Color.fromRGBO(
-                                                23, 161, 250, 1)),
+                                            color: isSelect == 0
+                                                ? Color.fromRGBO(
+                                                    23, 161, 250, 1)
+                                                : Color.fromRGBO(0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     )),
                                     Expanded(
                                         child: InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {
+                                          isSelect = 1;
+                                        });
+                                      },
                                       child: Text(
                                         "Lộ trình",
                                         style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
-                                            color:
-                                                Color.fromRGBO(0, 0, 0, 0.6)),
+                                            color: isSelect == 1
+                                                ? Color.fromRGBO(
+                                                    23, 161, 250, 1)
+                                                : Color.fromRGBO(0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     ))
@@ -122,8 +136,12 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                   width: double.infinity,
                                   color: Color.fromRGBO(23, 161, 250, 0.6),
                                 ),
-                                describeText(context, detailCoursesOtd!.name,
-                                    detailCoursesOtd!.description),
+                                isSelect == 0
+                                    ? describeText(
+                                        context,
+                                        detailCoursesOtd!.name,
+                                        detailCoursesOtd!.description)
+                                    : lessonContainer(context),
                               ],
                             ),
                           ),
@@ -240,5 +258,15 @@ Widget describeText(
         )
       ],
     ),
+  );
+}
+
+Widget lessonContainer(BuildContext context) {
+  return Container(
+    margin: EdgeInsets.only(top: 5),
+    padding: EdgeInsets.only(left: 20),
+    child: SingleChildScrollView(
+        child:
+            Column(children: [ListLessonClass_page(), ListLessonClass_page()])),
   );
 }
