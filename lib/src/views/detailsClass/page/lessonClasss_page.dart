@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../controller/lessonCourse.controller.dart';
+import '../../../model/otd/lessonCourse.otd.dart';
 import '../components/listlessonClass_page.dart';
 
 class LessonClass_Page extends StatefulWidget {
@@ -13,6 +15,7 @@ class LessonClass_Page extends StatefulWidget {
 }
 
 class _LessonClass_PageState extends State<LessonClass_Page> {
+  LessonCourseOtd? lessonCourseOtd;
   bool setSelector = false;
   @override
   Widget build(BuildContext context) {
@@ -20,8 +23,11 @@ class _LessonClass_PageState extends State<LessonClass_Page> {
       margin: EdgeInsets.only(top: 5),
       padding: EdgeInsets.only(left: 20),
       child: SingleChildScrollView(
-          child: Column(
-              children: [ListLessonClass_page(), ListLessonClass_page()])),
+          child: Column(children: [
+        ListLessonClass_page(
+          lessonCourseOtd: lessonCourseOtd!,
+        ),
+      ])),
     );
   }
 }

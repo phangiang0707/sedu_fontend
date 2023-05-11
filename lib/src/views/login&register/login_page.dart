@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../controller/loginEmail.controller.dart';
+import '../../model/otd/loginEmail.otd.dart';
 import '../home/home_page.dart';
 import '../menubar_page.dart';
 
@@ -16,6 +20,30 @@ class Login_page extends StatefulWidget {
 class _Login_pageState extends State<Login_page> {
   TextEditingController _txtUser = TextEditingController();
   TextEditingController _txtPass = TextEditingController();
+  UserControllerr? userControllerr;
+  LoginEmailOtd? loginEmailOtd;
+  bool isEmail(String string) {
+    // Null or empty string is invalid
+    if (string == null || string.isEmpty) {
+      return false;
+    }
+
+    const pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+    final regExp = RegExp(pattern);
+
+    if (!regExp.hasMatch(string)) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userControllerr = UserControllerr();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -87,41 +115,52 @@ class _Login_pageState extends State<Login_page> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               border: OutlineInputBorder(),
-                              hintText: "User name",
+                              hintText: "Email name",
                             ),
                           ),
                           SizedBox(
                             height: 20,
                           ),
-                          TextFormField(
-                            controller: _txtUser,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(
-                                        23, 161, 250, 1)), //<-- SEE HERE
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(23, 161, 250, 1)),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              border: OutlineInputBorder(),
-                              hintText: "Password",
-                            ),
-                          ),
+                          // TextFormField(
+                          //   controller: _txtUser,
+                          //   decoration: InputDecoration(
+                          //     enabledBorder: OutlineInputBorder(
+                          //       borderSide: BorderSide(
+                          //           width: 1,
+                          //           color: Color.fromRGBO(
+                          //               23, 161, 250, 1)), //<-- SEE HERE
+                          //       borderRadius: BorderRadius.circular(15),
+                          //     ),
+                          //     focusedBorder: OutlineInputBorder(
+                          //       borderSide: BorderSide(
+                          //           width: 1,
+                          //           color: Color.fromRGBO(23, 161, 250, 1)),
+                          //       borderRadius: BorderRadius.circular(15),
+                          //     ),
+                          //     border: OutlineInputBorder(),
+                          //     hintText: "Password",
+                          //   ),
+                          // ),
                           SizedBox(
                             height: 40,
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MenuBar_Page()));
+                              isEmail(_txtUser.text)
+                                  ? userControllerr!
+                                      .postUser(_txtUser.text)
+                                      .then((value) {
+                                      if (value != null) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MenuBar_Page()));
+                                      } else {
+                                        print('Error');
+                                      }
+                                    })
+                                  : print("Error email");
                             },
                             child: Container(
                               alignment: Alignment.center,

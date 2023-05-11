@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sedu_fontend/src/model/otd/calendarClass.otd.dart';
 
 class ContainerCalendar_Page extends StatefulWidget {
-  const ContainerCalendar_Page({super.key});
-
+  ContainerCalendar_Page(
+      {super.key, required this.calendarClassOtd, required this.name});
+  final CalendarClassOtd calendarClassOtd;
+  final String name;
   @override
   State<ContainerCalendar_Page> createState() => _ContainerCalendar_PageState();
 }
@@ -28,7 +31,7 @@ class _ContainerCalendar_PageState extends State<ContainerCalendar_Page> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "07:15 - 15:15",
+                      "${widget.calendarClassOtd.startTime} - ${widget.calendarClassOtd.endTime}",
                       style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -38,7 +41,7 @@ class _ContainerCalendar_PageState extends State<ContainerCalendar_Page> {
                       height: 5,
                     ),
                     Text(
-                      "Java cơ bản\nJava cơ bản",
+                      "${widget.name}",
                       style: GoogleFonts.inter(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,

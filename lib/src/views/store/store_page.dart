@@ -15,21 +15,18 @@ class Store_page extends StatefulWidget {
 }
 
 class _Store_pageState extends State<Store_page> {
-  CoursesController? coursesController;
   CoursesOtd? coursesOtd;
   List<CoursesOtd> listCoures = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    coursesController = CoursesController();
     CoursesController.fetchPosts().then((dataFromServer) {
       setState(() {
         listCoures = dataFromServer;
       });
-      print("aaaaaaaaaaaaaaaaa ${dataFromServer.length}");
     });
-    print("aaaaaaaaaaaaaaaaa ${listCoures.length}");
+    print("Số khóa học ${listCoures.length}");
   }
 
   @override

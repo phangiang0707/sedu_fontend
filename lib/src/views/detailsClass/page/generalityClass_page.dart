@@ -2,18 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sedu_fontend/src/model/otd/calendarClass.otd.dart';
+import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 
+import '../../../controller/calendar.controller.dart';
 import '../../home/components/containerCalendar_page.dart';
 import '../../home/components/containerNotification_page.dart';
 
 class GeneralityClass_Page extends StatefulWidget {
-  const GeneralityClass_Page({super.key});
-
+  const GeneralityClass_Page({super.key, required this.classRoomsOtd});
+  final ClassRoomsOtd classRoomsOtd;
   @override
   State<GeneralityClass_Page> createState() => _GeneralityClass_PageState();
 }
 
 class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
+  CalendarClassController? _calendarClassController;
+  List<CalendarClassOtd> listcalendarClassOtd = [];
+  CalendarClassOtd? calendarClassOtd;
+  int i = 0;
+  void checkDay(int j) {
+    calendarClassOtd = null;
+    listcalendarClassOtd.forEach((element) {
+      if (element.day == j) {
+        setState(() {
+          calendarClassOtd = element;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listcalendarClassOtd.forEach((element) {
+      if (element.day == 0) {
+        setState(() {
+          calendarClassOtd = element;
+        });
+      }
+    });
+    _calendarClassController = CalendarClassController();
+    _calendarClassController!
+        .getCalendarClass(widget.classRoomsOtd.id)
+        .then((value) {
+      listcalendarClassOtd = value!;
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +70,7 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                       color: Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
-                  "26/04/2023",
+                  "${widget.classRoomsOtd.startDate.day}/${widget.classRoomsOtd.startDate.month}/${widget.classRoomsOtd.startDate.year}",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -50,7 +88,7 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                       color: Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
-                  "123",
+                  "${widget.classRoomsOtd.code}",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -72,11 +110,12 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                       color: Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
-                  "Java cơ bản",
+                  "${widget.classRoomsOtd.course.name}",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Color.fromRGBO(0, 0, 0, 0.8)),
+                  maxLines: 2,
                 ),
               )),
               Expanded(
@@ -120,52 +159,155 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                     physics: BouncingScrollPhysics(),
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 0;
+                          });
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 2"),
+                          child: Text(
+                            "Thứ 2",
+                            style: GoogleFonts.inter(
+                                color: i == 0
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 1;
+                          });
+
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 3"),
+                          child: Text(
+                            "Thứ 3",
+                            style: GoogleFonts.inter(
+                                color: i == 1
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 2;
+                          });
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 4"),
+                          child: Text(
+                            "Thứ 4",
+                            style: GoogleFonts.inter(
+                                color: i == 2
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 3;
+                          });
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 5"),
+                          child: Text(
+                            "Thứ 5",
+                            style: GoogleFonts.inter(
+                                color: i == 3
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 4;
+                          });
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 6"),
+                          child: Text(
+                            "Thứ 6",
+                            style: GoogleFonts.inter(
+                                color: i == 4
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            i = 5;
+                          });
+                          checkDay(i);
+                        },
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Thứ 7"),
+                          child: Text(
+                            "Thứ 7",
+                            style: GoogleFonts.inter(
+                                color: i == 5
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            i = 6;
+                          });
+                          checkDay(i);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            "CN",
+                            style: GoogleFonts.inter(
+                                color: i == 6
+                                    ? Color.fromRGBO(23, 161, 250, 1)
+                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                ContainerCalendar_Page(),
-                ContainerCalendar_Page(),
+                calendarClassOtd == null
+                    ? SizedBox(
+                        height: 5,
+                      )
+                    : ContainerCalendar_Page(
+                        calendarClassOtd: calendarClassOtd!,
+                        name: widget.classRoomsOtd.name,
+                      ),
+                // Column(
+                //   children: calendarClassOtd
+                //       .map(
+                //         (e) => ContainerCalendar_Page(
+                //           i: i,
+                //           calendarClassOtd: calendarClassOtd,
+                //           name: widget.classRoomsOtd.name,
+                //         ),
+                //       )
+                //       .toList(),
+                // ),
+
 //Thông báo
                 Text("Thông báo",
                     style: GoogleFonts.inter(

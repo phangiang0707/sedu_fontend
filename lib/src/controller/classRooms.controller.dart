@@ -2,19 +2,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
-import '../model/otd/courses.otd.dart';
+import '../model/otd/classRooms.otd.dart';
 import '../utils/url.dart';
 
-class CoursesController {
-  static List<CoursesOtd> parsePost(String responseBody) {
+class ClassRoomsController {
+  static List<ClassRoomsOtd> parsePost(String responseBody) {
     var list = json.decode(responseBody) as List<dynamic>;
-    List<CoursesOtd> posts =
-        list.map((model) => CoursesOtd.fromJson(model)).toList();
+    List<ClassRoomsOtd> posts =
+        list.map((model) => ClassRoomsOtd.fromJson(model)).toList();
     return posts;
   }
 
-  static Future<List<CoursesOtd>> fetchPosts() async {
-    final response = await http.get(Uri.parse('${url}courses'));
+  static Future<List<ClassRoomsOtd>> fetchPosts() async {
+    final response = await http.get(Uri.parse('${url}classrooms'));
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
     if (response.statusCode == 200) {
