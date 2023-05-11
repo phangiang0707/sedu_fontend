@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sedu_fontend">
    <application
-        android:label="sedu_fontend"
+        android:label="sEdu"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/logo__image">
         <activity
             android:name=".MainActivity"
             android:exported="true"
