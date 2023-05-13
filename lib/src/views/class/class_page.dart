@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 import 'package:sedu_fontend/src/views/class/components/containerSearch_page.dart';
 
+import '../../controller/classRooms.controller.dart';
 import '../detailsClass/detailsClass_page.dart';
 
 class Class_Page extends StatefulWidget {
@@ -12,6 +14,20 @@ class Class_Page extends StatefulWidget {
 }
 
 class _Class_PageState extends State<Class_Page> {
+  ClassRoomsController? classRoomsController;
+  List<ClassRoomsOtd> classRoomsOtd = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    classRoomsController = ClassRoomsController();
+    ClassRoomsController.fetchPosts().then((value) {
+      setState(() {
+        classRoomsOtd = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +41,7 @@ class _Class_PageState extends State<Class_Page> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "2 lớp",
+                    "${classRoomsOtd.length} lớp",
                     style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -89,45 +105,54 @@ class _Class_PageState extends State<Class_Page> {
               SizedBox(
                 height: 10,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailsClass_Page()),
-                  );
-                },
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(23, 161, 250, 1),
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
+              Column(
+                children: classRoomsOtd
+                    .map(
+                      (e) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailsClass_Page(
+                                      classRoomsOtd: e,
+                                    )),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 20),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(23, 161, 250, 1),
+                                spreadRadius: 1,
+                                blurRadius: 2,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "${e.name}",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                              Text(
+                                "sEdu",
+                                style: GoogleFonts.inter(
+                                    fontSize: 16, fontWeight: FontWeight.w400),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Lớp Java",
-                        style: GoogleFonts.inter(
-                            fontSize: 24, fontWeight: FontWeight.w700),
-                      ),
-                      Text(
-                        "sEdu",
-                        style: GoogleFonts.inter(
-                            fontSize: 16, fontWeight: FontWeight.w400),
-                      )
-                    ],
-                  ),
-                ),
+                    )
+                    .toList(),
               )
             ],
           ),

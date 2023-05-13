@@ -3,8 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../model/otd/lessonCourse.otd.dart';
+
 class ListLessonClass_page extends StatefulWidget {
-  const ListLessonClass_page({super.key});
+  const ListLessonClass_page({super.key, required this.lessonCourseOtd});
+  final LessonCourseOtd lessonCourseOtd;
 
   @override
   State<ListLessonClass_page> createState() => _ListLessonClass_pageState();
@@ -26,7 +29,7 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
               width: 10,
             ),
             Text(
-              "Bài 1",
+              "${widget.lessonCourseOtd.title}",
               style: GoogleFonts.inter(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
@@ -48,7 +51,7 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
                 setSelector
                     ? Row(
                         children: [
-                          Text("2 video"),
+                          Text("0 video"),
                           IconButton(
                               onPressed: () {
                                 setState(() {
@@ -59,7 +62,7 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
                         ],
                       )
                     : Row(children: [
-                        Text("2 video"),
+                        Text("0 video"),
                         IconButton(
                             onPressed: () {
                               setState(() {

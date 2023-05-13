@@ -6,8 +6,10 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../controller/detailCourses.controller.dart';
+import '../../controller/lessonCourse.controller.dart';
 import '../../controller/writemoney.controller.dart';
 import '../../model/otd/detailCourses.otd.dart';
+import '../../model/otd/lessonCourse.otd.dart';
 import '../../utils/url.dart';
 import '../detailsClass/components/listlessonClass_page.dart';
 
@@ -21,10 +23,18 @@ class DetailCourse_page extends StatefulWidget {
 class _DetailCourse_pageState extends State<DetailCourse_page> {
   DetailCourseController? detailCourseController;
   DetailCoursesOtd? detailCoursesOtd;
+  LessonCourseController? lessonCourseController;
+  List<LessonCourseOtd> lessonCourseOtd = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    lessonCourseController = LessonCourseController();
+    lessonCourseController!.getLessonCourses(widget.id).then((value) {
+      setState(() {
+        lessonCourseOtd = value!;
+      });
+    });
     detailCourseController = DetailCourseController();
     detailCourseController!.getDetailCourses(widget.id).then((value) {
       setState(() {
@@ -141,7 +151,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                         context,
                                         detailCoursesOtd!.name,
                                         detailCoursesOtd!.description)
-                                    : lessonContainer(context),
+                                    : lessonContainer(context, lessonCourseOtd),
                               ],
                             ),
                           ),
@@ -261,12 +271,17 @@ Widget describeText(
   );
 }
 
-Widget lessonContainer(BuildContext context) {
+Widget lessonContainer(
+    BuildContext context, List<LessonCourseOtd> lessonCourseOtd) {
   return Container(
     margin: EdgeInsets.only(top: 5),
     padding: EdgeInsets.only(left: 20),
     child: SingleChildScrollView(
-        child:
-            Column(children: [ListLessonClass_page(), ListLessonClass_page()])),
+        child: Column(
+            children: lessonCourseOtd
+                .map((e) => ListLessonClass_page(
+                      lessonCourseOtd: e,
+                    ))
+                .toList())),
   );
 }
