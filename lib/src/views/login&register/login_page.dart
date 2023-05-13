@@ -114,9 +114,11 @@ class _Login_pageState extends State<Login_page> {
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
+                              labelText: "Email",
                               border: OutlineInputBorder(),
-                              hintText: "Email name",
+                              hintText: "Email",
                             ),
+                            keyboardType: TextInputType.emailAddress,
                           ),
                           SizedBox(
                             height: 20,

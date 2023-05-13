@@ -151,8 +151,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                         context,
                                         detailCoursesOtd!.name,
                                         detailCoursesOtd!.description)
-                                    : lessonContainer(
-                                        context, lessonCourseOtd!),
+                                    : lessonContainer(context, lessonCourseOtd),
                               ],
                             ),
                           ),

@@ -1,23 +1,23 @@
 // To parse this JSON data, do
 //
-//     final studentsOtd = studentsOtdFromJson(jsonString);
+//     final studentOtd = studentOtdFromJson(jsonString);
 
 import 'dart:convert';
 
-List<StudentsOtd> studentsOtdFromJson(String str) => List<StudentsOtd>.from(
-    json.decode(str).map((x) => StudentsOtd.fromJson(x)));
+List<StudentOtd> studentOtdFromJson(String str) =>
+    List<StudentOtd>.from(json.decode(str).map((x) => StudentOtd.fromJson(x)));
 
-String studentsOtdToJson(List<StudentsOtd> data) =>
+String studentOtdToJson(List<StudentOtd> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class StudentsOtd {
+class StudentOtd {
   String classroomId;
   String userId;
   String permission;
   DateTime createdAt;
   DateTime updatedAt;
 
-  StudentsOtd({
+  StudentOtd({
     required this.classroomId,
     required this.userId,
     required this.permission,
@@ -25,7 +25,7 @@ class StudentsOtd {
     required this.updatedAt,
   });
 
-  factory StudentsOtd.fromJson(Map<String, dynamic> json) => StudentsOtd(
+  factory StudentOtd.fromJson(Map<String, dynamic> json) => StudentOtd(
         classroomId: json["classroomId"],
         userId: json["userId"],
         permission: json["permission"],

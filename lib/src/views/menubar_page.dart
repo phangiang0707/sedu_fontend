@@ -18,13 +18,13 @@ class _MenuBar_PageState extends State<MenuBar_Page> {
   static const List<Widget> _widgetOptions = <Widget>[
     Class_Page(),
     Text(
-      'Index 1: Business',
+      'Index 1: Chat',
       style: optionStyle,
     ),
     Home_Page(),
     Store_page(),
     Text(
-      'Index 2: School',
+      'Index 4: Hồ sơ',
       style: optionStyle,
     ),
   ];

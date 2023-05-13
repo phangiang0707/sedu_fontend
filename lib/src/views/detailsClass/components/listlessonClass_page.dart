@@ -51,7 +51,7 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
                 setSelector
                     ? Row(
                         children: [
-                          Text("2 video"),
+                          Text("0 video"),
                           IconButton(
                               onPressed: () {
                                 setState(() {
@@ -62,7 +62,7 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
                         ],
                       )
                     : Row(children: [
-                        Text("2 video"),
+                        Text("0 video"),
                         IconButton(
                             onPressed: () {
                               setState(() {
