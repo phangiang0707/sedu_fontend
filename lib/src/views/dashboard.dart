@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'login&register/login_page.dart';
@@ -26,7 +24,7 @@ class _Dashboard_pageState extends State<Dashboard_page> {
             child: Container(
               height: 800,
               width: double.infinity,
-              color: Color.fromRGBO(0, 133, 255, 1),
+              color: const Color.fromRGBO(0, 133, 255, 1),
             ),
           ),
           ClipPath(
@@ -34,7 +32,7 @@ class _Dashboard_pageState extends State<Dashboard_page> {
             child: Container(
               height: 600,
               width: double.infinity,
-              color: Color.fromRGBO(23, 161, 250, 1),
+              color: const Color.fromRGBO(23, 161, 250, 1),
             ),
           ),
           Center(
@@ -42,7 +40,7 @@ class _Dashboard_pageState extends State<Dashboard_page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 60),
+                  margin: const EdgeInsets.only(top: 60),
                   height: 200,
                   width: 200,
                   child: Image.asset('images/logo__image.png'),
@@ -55,27 +53,27 @@ class _Dashboard_pageState extends State<Dashboard_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Login_page()));
+                                  builder: (context) => const Login_page()));
                         },
                         child: Container(
                           alignment: Alignment.center,
                           width: 300,
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
-                                  color: Color.fromRGBO(0, 133, 255, 1),
+                                  color: const Color.fromRGBO(0, 133, 255, 1),
                                   width: 1)),
                           child: Text(
                             "Đăng nhập",
                             style: GoogleFonts.inter(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
-                                color: Color.fromRGBO(0, 133, 255, 1)),
+                                color: const Color.fromRGBO(0, 133, 255, 1)),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       InkWell(
@@ -83,15 +81,15 @@ class _Dashboard_pageState extends State<Dashboard_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Register_page()));
+                                  builder: (context) => const Register_page()));
                         },
                         child: Container(
                           alignment: Alignment.center,
                           width: 300,
-                          padding: EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              color: Color.fromRGBO(0, 133, 255, 1)),
+                              color: const Color.fromRGBO(0, 133, 255, 1)),
                           child: Text(
                             "Đăng ký",
                             style: GoogleFonts.inter(
@@ -106,7 +104,7 @@ class _Dashboard_pageState extends State<Dashboard_page> {
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text("Hổ trợ"),
+                  child: const Text("Hổ trợ"),
                 )
               ],
             ),

@@ -1,1 +1,1 @@
-const String url = 'http://api-sedu-v1.hmcdat.dev/';
+const String url = 'https://api-sedu-v1.hmcdat.dev/';

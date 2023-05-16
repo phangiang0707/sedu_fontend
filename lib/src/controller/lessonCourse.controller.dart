@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../model/otd/lessonCourse.otd.dart';
 import '../utils/url.dart';

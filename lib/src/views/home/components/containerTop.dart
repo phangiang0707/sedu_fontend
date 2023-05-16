@@ -12,9 +12,10 @@ class _ContainerTopState extends State<ContainerTop> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Image.asset(
               'images/image1.png',
@@ -23,8 +24,10 @@ class _ContainerTopState extends State<ContainerTop> {
           ),
           Positioned(
               child: Container(
-            height: 160,
-            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 4,
+            //height: 160,
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,11 +37,11 @@ class _ContainerTopState extends State<ContainerTop> {
                   child: Container(
                     child: Column(
                       children: [
-                        Icon(Icons.live_tv_rounded),
+                        const Icon(Icons.live_tv_rounded),
                         Text(
                           "Live",
                           style: GoogleFonts.inter(
-                              color: Color.fromRGBO(58, 58, 58, 1),
+                              color: const Color.fromRGBO(58, 58, 58, 1),
                               fontSize: 12,
                               fontWeight: FontWeight.w600),
                         )

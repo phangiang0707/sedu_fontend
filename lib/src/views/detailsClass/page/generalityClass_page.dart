@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/model/otd/calendarClass.otd.dart';
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
@@ -23,26 +21,26 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
   int i = 0;
   void checkDay(int j) {
     calendarClassOtd = null;
-    listcalendarClassOtd.forEach((element) {
+    for (var element in listcalendarClassOtd) {
       if (element.day == j) {
         setState(() {
           calendarClassOtd = element;
         });
       }
-    });
+    }
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    listcalendarClassOtd.forEach((element) {
+    for (var element in listcalendarClassOtd) {
       if (element.day == 0) {
         setState(() {
           calendarClassOtd = element;
         });
       }
-    });
+    }
     _calendarClassController = CalendarClassController();
     _calendarClassController!
         .getCalendarClass(widget.classRoomsOtd.id)
@@ -61,38 +59,38 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
             children: [
               Expanded(
                   child: ListTile(
-                leading: Icon(Icons.calendar_month_outlined),
+                leading: const Icon(Icons.calendar_month_outlined),
                 title: Text(
                   "Ngày bắt đầu",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.6)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
                   "${widget.classRoomsOtd.startDate.day}/${widget.classRoomsOtd.startDate.month}/${widget.classRoomsOtd.startDate.year}",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.8)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.8)),
                 ),
               )),
               Expanded(
                   child: ListTile(
-                leading: Icon(Icons.tag_outlined),
+                leading: const Icon(Icons.tag_outlined),
                 title: Text(
                   "Mã lớp",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.6)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
-                  "${widget.classRoomsOtd.code}",
+                  widget.classRoomsOtd.code,
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.8)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.8)),
                 ),
               ))
             ],
@@ -101,39 +99,39 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
             children: [
               Expanded(
                   child: ListTile(
-                leading: Icon(Icons.add_to_photos_outlined),
+                leading: const Icon(Icons.add_to_photos_outlined),
                 title: Text(
                   "Môn học",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.6)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
-                  "${widget.classRoomsOtd.course.name}",
+                  widget.classRoomsOtd.course.name,
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.8)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.8)),
                   maxLines: 2,
                 ),
               )),
               Expanded(
                   child: ListTile(
-                leading: Icon(Icons.timer_outlined),
+                leading: const Icon(Icons.timer_outlined),
                 title: Text(
                   "Thời lượng",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.6)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.6)),
                 ),
                 subtitle: Text(
                   "45 phút",
                   style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.8)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.8)),
                 ),
               ))
             ],
@@ -148,15 +146,15 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                     style: GoogleFonts.inter(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(23, 161, 250, 1))),
-                SizedBox(
+                        color: const Color.fromRGBO(23, 161, 250, 1))),
+                const SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   height: 40,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     children: [
                       InkWell(
                         onTap: () {
@@ -166,13 +164,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 2",
                             style: GoogleFonts.inter(
                                 color: i == 0
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -185,13 +183,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 3",
                             style: GoogleFonts.inter(
                                 color: i == 1
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -203,13 +201,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 4",
                             style: GoogleFonts.inter(
                                 color: i == 2
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -221,13 +219,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 5",
                             style: GoogleFonts.inter(
                                 color: i == 3
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -239,13 +237,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 6",
                             style: GoogleFonts.inter(
                                 color: i == 4
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -257,13 +255,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "Thứ 7",
                             style: GoogleFonts.inter(
                                 color: i == 5
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -275,13 +273,13 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           checkDay(i);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             "CN",
                             style: GoogleFonts.inter(
                                 color: i == 6
-                                    ? Color.fromRGBO(23, 161, 250, 1)
-                                    : Color.fromRGBO(0, 0, 0, 0.8)),
+                                    ? const Color.fromRGBO(23, 161, 250, 1)
+                                    : const Color.fromRGBO(0, 0, 0, 0.8)),
                           ),
                         ),
                       ),
@@ -289,7 +287,7 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                   ),
                 ),
                 calendarClassOtd == null
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 5,
                       )
                     : ContainerCalendar_Page(
@@ -313,9 +311,9 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                     style: GoogleFonts.inter(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(23, 161, 250, 1))),
-                ContainerNotification_Page(),
-                ContainerNotification_Page(),
+                        color: const Color.fromRGBO(23, 161, 250, 1))),
+                const ContainerNotification_Page(),
+                const ContainerNotification_Page(),
               ],
             ),
           ),

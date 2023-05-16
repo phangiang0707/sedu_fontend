@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 import 'package:sedu_fontend/src/views/detailsClass/page/generalityClass_page.dart';
 
-import 'page/documentClass_page.dart';
-import 'page/exerciseClass_page.dart';
 import 'page/lessonClasss_page.dart';
 import 'page/listStudent_page.dart';
 import 'page/listTeacher_page.dart';
@@ -33,7 +31,7 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
       child: Scaffold(
         body: Column(children: [
           Container(
-            color: Color.fromRGBO(23, 161, 250, 1),
+            color: const Color.fromRGBO(23, 161, 250, 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -41,24 +39,24 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_new_outlined,
                       color: Colors.white,
                     )),
                 Text(
-                  "${widget.classRoomsOtd.name}",
+                  widget.classRoomsOtd.name,
                   style: GoogleFonts.inter(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 1,
                 )
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 40,
             child: ListView(
               scrollDirection: Axis.horizontal,
@@ -71,7 +69,7 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                     });
                   },
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 40,
                     alignment: Alignment.center,
                     child: Text(
@@ -80,8 +78,8 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: i == 0
-                              ? Color.fromRGBO(23, 161, 250, 0.8)
-                              : Color.fromRGBO(0, 0, 0, 0.6)),
+                              ? const Color.fromRGBO(23, 161, 250, 0.8)
+                              : const Color.fromRGBO(0, 0, 0, 0.6)),
                     ),
                   ),
                 ),
@@ -93,7 +91,7 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                     });
                   },
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 40,
                     alignment: Alignment.center,
                     child: Text(
@@ -102,8 +100,8 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: i == 1
-                              ? Color.fromRGBO(23, 161, 250, 0.8)
-                              : Color.fromRGBO(0, 0, 0, 0.6)),
+                              ? const Color.fromRGBO(23, 161, 250, 0.8)
+                              : const Color.fromRGBO(0, 0, 0, 0.6)),
                     ),
                   ),
                 ),
@@ -159,7 +157,7 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                     });
                   },
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 40,
                     alignment: Alignment.center,
                     child: Text(
@@ -168,8 +166,8 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: i == 4
-                              ? Color.fromRGBO(23, 161, 250, 0.8)
-                              : Color.fromRGBO(0, 0, 0, 0.6)),
+                              ? const Color.fromRGBO(23, 161, 250, 0.8)
+                              : const Color.fromRGBO(0, 0, 0, 0.6)),
                     ),
                   ),
                 ),
@@ -181,7 +179,7 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                     });
                   },
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 40,
                     alignment: Alignment.center,
                     child: Text(
@@ -190,8 +188,8 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: i == 5
-                              ? Color.fromRGBO(23, 161, 250, 0.8)
-                              : Color.fromRGBO(0, 0, 0, 0.6)),
+                              ? const Color.fromRGBO(23, 161, 250, 0.8)
+                              : const Color.fromRGBO(0, 0, 0, 0.6)),
                     ),
                   ),
                 ),

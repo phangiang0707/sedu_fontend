@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sedu_fontend/src/model/sponsorModel.dart';
 import 'package:sedu_fontend/src/views/dashboard.dart';
-import 'package:sedu_fontend/src/views/menubar_page.dart';
 
 void main() {
   runApp(const MyHomePage());
@@ -11,8 +12,11 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SafeArea(child: Dashboard_page()));
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => SponsorModel())],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SafeArea(child: Dashboard_page())),
+    );
   }
 }

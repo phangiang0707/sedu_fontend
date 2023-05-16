@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 
 import '../../../controller/lessonCourse.controller.dart';
@@ -36,8 +33,8 @@ class _LessonClass_PageState extends State<LessonClass_Page> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5),
-      padding: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(top: 5),
+      padding: const EdgeInsets.only(left: 20),
       child: SingleChildScrollView(
           child: Column(
               children: lessonCourseOtd

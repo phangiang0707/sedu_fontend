@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/otd/register.otd.dart';
@@ -8,7 +6,7 @@ import '../utils/url.dart';
 class RegisterController {
   Future<RegisterOtd?> postRegister(RegisterOtd data) async {
     var response = await http.post(
-      Uri.parse(url + 'users/register'),
+      Uri.parse('${url}users/register'),
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,13 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../controller/loginEmail.controller.dart';
 import '../../model/otd/loginEmail.otd.dart';
-import '../home/home_page.dart';
+import '../../model/sponsorModel.dart';
 import '../menubar_page.dart';
 
 class Login_page extends StatefulWidget {
@@ -18,13 +15,13 @@ class Login_page extends StatefulWidget {
 }
 
 class _Login_pageState extends State<Login_page> {
-  TextEditingController _txtUser = TextEditingController();
-  TextEditingController _txtPass = TextEditingController();
+  final TextEditingController _txtUser = TextEditingController();
+  final TextEditingController _txtPass = TextEditingController();
   UserControllerr? userControllerr;
   LoginEmailOtd? loginEmailOtd;
   bool isEmail(String string) {
     // Null or empty string is invalid
-    if (string == null || string.isEmpty) {
+    if (string.isEmpty) {
       return false;
     }
 
@@ -55,7 +52,7 @@ class _Login_pageState extends State<Login_page> {
             child: Container(
               height: 800,
               width: double.infinity,
-              color: Color.fromRGBO(0, 133, 255, 1),
+              color: const Color.fromRGBO(0, 133, 255, 1),
             ),
           ),
           ClipPath(
@@ -63,11 +60,11 @@ class _Login_pageState extends State<Login_page> {
             child: Container(
               height: 600,
               width: double.infinity,
-              color: Color.fromRGBO(23, 161, 250, 1),
+              color: const Color.fromRGBO(23, 161, 250, 1),
             ),
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               //padding: EdgeInsets.symmetric(horizontal: 20),
               height: double.infinity,
               child: SingleChildScrollView(
@@ -79,48 +76,48 @@ class _Login_pageState extends State<Login_page> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back_ios_new_outlined,
                             color: Colors.white,
                           )),
                     ),
                     Container(
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 60),
+                      margin: const EdgeInsets.only(top: 60),
                       height: 200,
                       width: 200,
                       child: Image.asset('images/logo__image.png'),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         children: [
                           TextFormField(
                             controller: _txtUser,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(
                                         23, 161, 250, 1)), //<-- SEE HERE
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               labelText: "Email",
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               hintText: "Email",
                             ),
                             keyboardType: TextInputType.emailAddress,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           // TextFormField(
@@ -143,7 +140,7 @@ class _Login_pageState extends State<Login_page> {
                           //     hintText: "Password",
                           //   ),
                           // ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           InkWell(
@@ -153,11 +150,14 @@ class _Login_pageState extends State<Login_page> {
                                       .postUser(_txtUser.text)
                                       .then((value) {
                                       if (value != null) {
+                                        Provider.of<SponsorModel>(context,
+                                                listen: false)
+                                            .getUser(value);
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    MenuBar_Page()));
+                                                    const MenuBar_Page()));
                                       } else {
                                         print('Error');
                                       }
@@ -167,10 +167,10 @@ class _Login_pageState extends State<Login_page> {
                             child: Container(
                               alignment: Alignment.center,
                               width: 200,
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromRGBO(23, 161, 250, 1)),
+                                  color: const Color.fromRGBO(23, 161, 250, 1)),
                               child: Text(
                                 "Đăng nhập",
                                 style: GoogleFonts.inter(
@@ -183,12 +183,12 @@ class _Login_pageState extends State<Login_page> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text("Hổ trợ"),
+                      child: const Text("Hổ trợ"),
                     )
                   ],
                 ),

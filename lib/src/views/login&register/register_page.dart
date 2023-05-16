@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/views/menubar_page.dart';
 
@@ -17,11 +15,11 @@ class Register_page extends StatefulWidget {
 class _Register_pageState extends State<Register_page> {
   RegisterController? registerController;
   RegisterOtd? registerOtd;
-  TextEditingController _txtName = TextEditingController();
-  TextEditingController _txtEmail = TextEditingController();
-  TextEditingController _txtPhone = TextEditingController();
-  DateTime _txtBirthday = DateTime.now();
-  TextEditingController _txtPass = TextEditingController();
+  final TextEditingController _txtName = TextEditingController();
+  final TextEditingController _txtEmail = TextEditingController();
+  final TextEditingController _txtPhone = TextEditingController();
+  final DateTime _txtBirthday = DateTime.now();
+  final TextEditingController _txtPass = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -40,7 +38,7 @@ class _Register_pageState extends State<Register_page> {
             child: Container(
               height: 800,
               width: double.infinity,
-              color: Color.fromRGBO(0, 133, 255, 1),
+              color: const Color.fromRGBO(0, 133, 255, 1),
             ),
           ),
           ClipPath(
@@ -48,11 +46,11 @@ class _Register_pageState extends State<Register_page> {
             child: Container(
               height: 600,
               width: double.infinity,
-              color: Color.fromRGBO(23, 161, 250, 1),
+              color: const Color.fromRGBO(23, 161, 250, 1),
             ),
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               //padding: EdgeInsets.symmetric(horizontal: 20),
               height: double.infinity,
               child: SingleChildScrollView(
@@ -64,115 +62,115 @@ class _Register_pageState extends State<Register_page> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back_ios_new_outlined,
                             color: Colors.white,
                           )),
                     ),
                     Container(
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 60),
+                      margin: const EdgeInsets.only(top: 60),
                       height: 200,
                       width: 200,
                       child: Image.asset('images/logo__image.png'),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         children: [
                           TextFormField(
                             controller: _txtName,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(
                                         23, 161, 250, 1)), //<-- SEE HERE
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               hintText: "User name",
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           TextFormField(
                             controller: _txtEmail,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(
                                         23, 161, 250, 1)), //<-- SEE HERE
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               hintText: "Email address",
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           TextFormField(
                             controller: _txtPhone,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(
                                         23, 161, 250, 1)), //<-- SEE HERE
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               hintText: "Phone number",
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           TextFormField(
                             controller: _txtPass,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(
                                         23, 161, 250, 1)), //<-- SEE HERE
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 1,
                                     color: Color.fromRGBO(23, 161, 250, 1)),
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                               hintText: "Password",
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           InkWell(
@@ -197,17 +195,17 @@ class _Register_pageState extends State<Register_page> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              MenuBar_Page()));
+                                              const MenuBar_Page()));
                                 }
                               });
                             },
                             child: Container(
                               alignment: Alignment.center,
                               width: 200,
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromRGBO(23, 161, 250, 1)),
+                                  color: const Color.fromRGBO(23, 161, 250, 1)),
                               child: Text(
                                 "Đăng ký",
                                 style: GoogleFonts.inter(
@@ -220,12 +218,12 @@ class _Register_pageState extends State<Register_page> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text("Hổ trợ"),
+                      child: const Text("Hổ trợ"),
                     )
                   ],
                 ),

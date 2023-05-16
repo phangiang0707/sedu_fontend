@@ -31,14 +31,13 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
                 builder: (context) => DetailCourse_page(
                       id: widget.coursesOtd.id,
                     )));
-        print("bbbbbbbbbbbbbbbbbbbbb" + widget.coursesOtd.id);
+        print("bbbbbbbbbbbbbbbbbbbbb${widget.coursesOtd.id}");
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         decoration: BoxDecoration(
-            color: Color.fromRGBO(255, 255, 255, 1),
+            color: const Color.fromRGBO(255, 255, 255, 1),
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                   color: Color.fromRGBO(23, 161, 250, 1),
                   blurRadius: 2,
@@ -49,7 +48,7 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
         width: 150,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               child: widget.coursesOtd.imageUrl == null
                   ? Image.asset('images/backgroud.png')
@@ -62,10 +61,13 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${widget.coursesOtd.name}",
+                  widget.coursesOtd.name,
                   style: GoogleFonts.inter(
                       fontSize: 16, fontWeight: FontWeight.w600),
                   maxLines: 2,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
                   child: Column(
@@ -76,7 +78,7 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
                           style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              color: Color.fromRGBO(0, 0, 0, 0.8)),
+                              color: const Color.fromRGBO(0, 0, 0, 0.8)),
                         ),
                         Text(
                           WriteMoney()
@@ -84,7 +86,7 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
                           style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromRGBO(255, 0, 0, 0.8)),
+                              color: const Color.fromRGBO(255, 0, 0, 0.8)),
                         )
                       ]),
                 ),

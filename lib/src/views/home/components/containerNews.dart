@@ -12,11 +12,11 @@ class _ContainerNews_PageState extends State<ContainerNews_Page> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20, 5, 20, 10),
-      margin: EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
+      margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Color.fromRGBO(23, 161, 250, 1)),
+        border: Border.all(color: const Color.fromRGBO(23, 161, 250, 1)),
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
@@ -44,16 +44,16 @@ class _ContainerNews_PageState extends State<ContainerNews_Page> {
                 style: GoogleFonts.inter(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: Color.fromRGBO(255, 0, 0, 1)),
+                    color: const Color.fromRGBO(255, 0, 0, 1)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text("Điện tăng, giá hàng hóa có tăng?",
                   style: GoogleFonts.inter(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(0, 0, 0, 1))),
+                      color: const Color.fromRGBO(0, 0, 0, 1))),
             ]),
           ),
           Row(

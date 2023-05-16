@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dotted_border/dotted_border.dart';
 
@@ -18,7 +16,7 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
       child: Scaffold(
         body: Column(children: [
           Container(
-            color: Color.fromRGBO(23, 161, 250, 1),
+            color: const Color.fromRGBO(23, 161, 250, 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -26,7 +24,7 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_new_outlined,
                       color: Colors.white,
                     )),
@@ -37,7 +35,7 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 1,
                 )
               ],
@@ -48,13 +46,13 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(bottom: 20),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(247, 247, 247, 1),
+                      color: const Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Color.fromRGBO(
                               23,
@@ -74,7 +72,7 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                           style: GoogleFonts.inter(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromRGBO(201, 0, 0, 1)),
+                              color: const Color.fromRGBO(201, 0, 0, 1)),
                         ),
                         Text(
                           "Nộp bài theo đúng cú pháp",
@@ -84,13 +82,13 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                       ]),
                 ),
                 Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(bottom: 30),
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(bottom: 30),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(247, 247, 247, 1),
+                      color: const Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Color.fromRGBO(
                               23,
@@ -118,13 +116,13 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                       ]),
                 ),
                 Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(bottom: 30),
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(bottom: 30),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(247, 247, 247, 1),
+                      color: const Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Color.fromRGBO(
                               23,
@@ -147,7 +145,7 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                               style: GoogleFonts.inter(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Color.fromRGBO(23, 161, 250, 1)),
+                                  color: const Color.fromRGBO(23, 161, 250, 1)),
                             ),
                             Container(
                               child: Row(
@@ -163,22 +161,22 @@ class _ExerciseDetails_pageState extends State<ExerciseDetails_page> {
                                     style: GoogleFonts.inter(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
-                                        color: Color.fromRGBO(255, 0, 0, 1)),
+                                        color: const Color.fromRGBO(255, 0, 0, 1)),
                                   ),
                                 ],
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         InkWell(
                           onTap: () {},
                           child: DottedBorder(
-                              color: Color.fromRGBO(48, 48, 48, 1),
-                              dashPattern: [10],
-                              child: Container(
+                              color: const Color.fromRGBO(48, 48, 48, 1),
+                              dashPattern: const [10],
+                              child: const SizedBox(
                                 height: 60,
                                 width: 320,
                                 child: Icon(

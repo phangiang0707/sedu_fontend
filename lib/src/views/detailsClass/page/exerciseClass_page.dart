@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../class/components/containerSearch_page.dart';
 import '../components/listexerciseClass_page.dart';
@@ -22,14 +19,14 @@ class _ExerciseClass_PageState extends State<ExerciseClass_Page> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ContainerSearch_Page(),
-              SizedBox(
+              const ContainerSearch_Page(),
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: ListView(
-                  children: [
+                  children: const [
                     ListExerciseClass_page(),
                     ListExerciseClass_page()
                   ],

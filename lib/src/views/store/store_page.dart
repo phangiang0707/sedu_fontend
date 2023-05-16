@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/model/otd/courses.otd.dart';
 
@@ -17,6 +15,7 @@ class Store_page extends StatefulWidget {
 class _Store_pageState extends State<Store_page> {
   CoursesOtd? coursesOtd;
   List<CoursesOtd> listCoures = [];
+  List<CoursesOtd> _listCouresDisplay = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -24,6 +23,7 @@ class _Store_pageState extends State<Store_page> {
     CoursesController.fetchPosts().then((dataFromServer) {
       setState(() {
         listCoures = dataFromServer;
+        _listCouresDisplay = listCoures;
       });
     });
     print("Số khóa học ${listCoures.length}");
@@ -34,34 +34,43 @@ class _Store_pageState extends State<Store_page> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 TextFormField(
+                  onChanged: (text) {
+                    text = text.toLowerCase();
+                    setState(() {
+                      _listCouresDisplay = listCoures.where((element) {
+                        var postitle = element.name.toLowerCase();
+                        return postitle.contains(text);
+                      }).toList();
+                    });
+                  },
                   decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       hintText: "Tìm kiếm",
                       border: InputBorder.none,
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                             width: 1,
                             color:
                                 Color.fromRGBO(23, 161, 250, 1)), //<-- SEE HERE
                         borderRadius: BorderRadius.circular(15),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                             width: 1, color: Color.fromRGBO(23, 161, 250, 1)),
                         borderRadius: BorderRadius.circular(15),
                       )),
                   style: GoogleFonts.inter(
                       fontSize: 18, fontWeight: FontWeight.w400),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerRight,
                   child: Icon(
                     Icons.filter_alt_outlined,
@@ -69,12 +78,14 @@ class _Store_pageState extends State<Store_page> {
                     color: Color.fromRGBO(0, 0, 0, 0.7),
                   ),
                 ),
-                listCoures != null
+                _listCouresDisplay != null
                     ? Wrap(
-                        children: listCoures
+                        spacing: 20,
+                        runSpacing: 10,
+                        children: _listCouresDisplay
                             .map((e) => ContainerCourse_page(coursesOtd: e))
                             .toList())
-                    : Center(
+                    : const Center(
                         child: CircularProgressIndicator(),
                       )
               ],

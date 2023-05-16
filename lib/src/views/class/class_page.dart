@@ -16,6 +16,7 @@ class Class_Page extends StatefulWidget {
 class _Class_PageState extends State<Class_Page> {
   ClassRoomsController? classRoomsController;
   List<ClassRoomsOtd> classRoomsOtd = [];
+  List<ClassRoomsOtd> _classRoomsOtdDisplay = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -24,6 +25,7 @@ class _Class_PageState extends State<Class_Page> {
     ClassRoomsController.fetchPosts().then((value) {
       setState(() {
         classRoomsOtd = value;
+        _classRoomsOtdDisplay = classRoomsOtd;
       });
     });
   }
@@ -36,7 +38,37 @@ class _Class_PageState extends State<Class_Page> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              ContainerSearch_Page(),
+              Container(
+                child: TextFormField(
+                  onChanged: (text) {
+                    text = text.toLowerCase();
+                    setState(() {
+                      _classRoomsOtdDisplay = classRoomsOtd.where((element) {
+                        var postitle = element.name.toLowerCase();
+                        return postitle.contains(text);
+                      }).toList();
+                    });
+                  },
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      hintText: "Tìm kiếm",
+                      border: InputBorder.none,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            width: 1,
+                            color:
+                                Color.fromRGBO(23, 161, 250, 1)), //<-- SEE HERE
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            width: 1, color: Color.fromRGBO(23, 161, 250, 1)),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                  style: GoogleFonts.inter(
+                      fontSize: 18, fontWeight: FontWeight.w400),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -45,7 +77,7 @@ class _Class_PageState extends State<Class_Page> {
                     style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Color.fromRGBO(0, 0, 0, 0.3)),
+                        color: const Color.fromRGBO(0, 0, 0, 0.3)),
                   ),
                   TextButton(
                       onPressed: () {
@@ -58,14 +90,14 @@ class _Class_PageState extends State<Class_Page> {
                                       hintText: "Nhập mã lớp học",
                                       border: InputBorder.none,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 1,
                                             color: Color.fromRGBO(
                                                 23, 161, 250, 1)),
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 1,
                                             color: Color.fromRGBO(
                                                 23, 161, 250, 1)),
@@ -79,8 +111,9 @@ class _Class_PageState extends State<Class_Page> {
                                   Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Color.fromRGBO(23, 161, 250, 1)),
-                                    padding: EdgeInsets.all(10),
+                                        color: const Color.fromRGBO(
+                                            23, 161, 250, 1)),
+                                    padding: const EdgeInsets.all(10),
                                     child: Text(
                                       "Xác nhận",
                                       style: GoogleFonts.inter(
@@ -98,15 +131,15 @@ class _Class_PageState extends State<Class_Page> {
                         style: GoogleFonts.inter(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(0, 0, 0, 0.8)),
+                            color: const Color.fromRGBO(0, 0, 0, 0.8)),
                       ))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Column(
-                children: classRoomsOtd
+                children: _classRoomsOtdDisplay
                     .map(
                       (e) => InkWell(
                         onTap: () {
@@ -119,12 +152,12 @@ class _Class_PageState extends State<Class_Page> {
                           );
                         },
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 20),
+                          margin: const EdgeInsets.only(bottom: 20),
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(23, 161, 250, 1),
                                 spreadRadius: 1,
@@ -133,12 +166,12 @@ class _Class_PageState extends State<Class_Page> {
                               ),
                             ],
                           ),
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${e.name}",
+                                e.name,
                                 style: GoogleFonts.inter(
                                     fontSize: 18, fontWeight: FontWeight.w700),
                               ),

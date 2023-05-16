@@ -1,8 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../controller/detailCourses.controller.dart';
@@ -41,8 +37,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
         detailCoursesOtd = value;
       });
     });
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        detailCoursesOtd.toString());
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$detailCoursesOtd");
   }
 
   int isSelect = 0;
@@ -51,12 +46,12 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
     return SafeArea(
       child: detailCoursesOtd != null
           ? Scaffold(
-              body: Container(
+              body: SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: detailCoursesOtd!.imageUrl == null
                           ? Image.asset(
@@ -79,21 +74,21 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back_ios_new_outlined,
                                   color: Colors.white,
                                 )),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 100),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.only(top: 100),
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20)),
                                 color: Colors.white),
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Row(
@@ -111,9 +106,9 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: isSelect == 0
-                                                ? Color.fromRGBO(
+                                                ? const Color.fromRGBO(
                                                     23, 161, 250, 1)
-                                                : Color.fromRGBO(0, 0, 0, 0.6)),
+                                                : const Color.fromRGBO(0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     )),
@@ -130,21 +125,21 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: isSelect == 1
-                                                ? Color.fromRGBO(
+                                                ? const Color.fromRGBO(
                                                     23, 161, 250, 1)
-                                                : Color.fromRGBO(0, 0, 0, 0.6)),
+                                                : const Color.fromRGBO(0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     ))
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Container(
                                   height: 2,
                                   width: double.infinity,
-                                  color: Color.fromRGBO(23, 161, 250, 0.6),
+                                  color: const Color.fromRGBO(23, 161, 250, 0.6),
                                 ),
                                 isSelect == 0
                                     ? describeText(
@@ -165,7 +160,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                 alignment: Alignment.center,
                 width: double.infinity,
                 height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -183,26 +178,26 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                           style: GoogleFonts.inter(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
-                              color: Color.fromRGBO(255, 0, 0, 1)),
+                              color: const Color.fromRGBO(255, 0, 0, 1)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Container(
                       height: 50,
                       width: 3,
-                      color: Color.fromRGBO(23, 161, 250, 0.6),
+                      color: const Color.fromRGBO(23, 161, 250, 0.6),
                     ),
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 47,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.shopping_bag_outlined,
                             size: 24,
                             color: Color.fromRGBO(23, 161, 250, 0.6),
@@ -212,15 +207,15 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                             style: GoogleFonts.inter(
                                 fontSize: 8,
                                 fontWeight: FontWeight.w400,
-                                color: Color.fromRGBO(23, 161, 250, 1)),
+                                color: const Color.fromRGBO(23, 161, 250, 1)),
                           ),
                         ],
                       ),
                     ),
                     Container(
                       height: 50,
-                      color: Color.fromRGBO(0, 133, 255, 1),
-                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      color: const Color.fromRGBO(0, 133, 255, 1),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       alignment: Alignment.center,
                       child: Text(
                         "Mua khóa học",
@@ -233,38 +228,38 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                   ],
                 ),
               ))
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
 
 Widget describeText(
-    BuildContext context, String _txtTitle, String _txtDocument) {
+    BuildContext context, String txtTitle, String txtDocument) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20),
+    padding: const EdgeInsets.symmetric(horizontal: 20),
     width: double.infinity,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Text(
-          _txtTitle,
+          txtTitle,
           style: GoogleFonts.inter(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: Color.fromRGBO(23, 161, 250, 1)),
+              color: const Color.fromRGBO(23, 161, 250, 1)),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Text(
-          _txtDocument,
+          txtDocument,
           style: GoogleFonts.inter(
               fontSize: 20,
               fontWeight: FontWeight.w400,
-              color: Color.fromRGBO(0, 0, 0, 0.7)),
+              color: const Color.fromRGBO(0, 0, 0, 0.7)),
         )
       ],
     ),
@@ -274,8 +269,8 @@ Widget describeText(
 Widget lessonContainer(
     BuildContext context, List<LessonCourseOtd> lessonCourseOtd) {
   return Container(
-    margin: EdgeInsets.only(top: 5),
-    padding: EdgeInsets.only(left: 20),
+    margin: const EdgeInsets.only(top: 5),
+    padding: const EdgeInsets.only(left: 20),
     child: SingleChildScrollView(
         child: Column(
             children: lessonCourseOtd

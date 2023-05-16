@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sedu_fontend/src/views/home/components/containerCourse_page.dart';
 
-import 'components/containerCalendar_page.dart';
+import '../../controller/courses.controller.dart';
+import '../../model/otd/courses.otd.dart';
+import '../store/store_page.dart';
+import 'components/containerCourse_page.dart';
 import 'components/containerNews.dart';
 import 'components/containerNotification_page.dart';
 import 'components/containerTop.dart';
@@ -15,14 +17,28 @@ class Home_Page extends StatefulWidget {
 }
 
 class _Home_PageState extends State<Home_Page> {
+  CoursesOtd? coursesOtd;
+  List<CoursesOtd> listCoures = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    CoursesController.fetchPosts().then((dataFromServer) {
+      setState(() {
+        listCoures = dataFromServer;
+      });
+    });
+    print("Số khóa học ${listCoures.length}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            ContainerTop(),
+            const ContainerTop(),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Column(
@@ -33,19 +49,26 @@ class _Home_PageState extends State<Home_Page> {
                       Text(
                         "Khóa học nổi bật",
                         style: GoogleFonts.inter(
-                            color: Color.fromRGBO(0, 99, 163, 1),
+                            color: const Color.fromRGBO(0, 99, 163, 1),
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Store_page(),
+                              ));
+                        },
                         child: Container(
                           child: Row(
                             children: [
                               Text(
                                 "Tất cả",
                                 style: GoogleFonts.inter(
-                                    color: Color.fromRGBO(23, 161, 250, 1),
+                                    color:
+                                        const Color.fromRGBO(23, 161, 250, 1),
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -63,85 +86,86 @@ class _Home_PageState extends State<Home_Page> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    height: 180,
+                  SizedBox(
+                    height: 200,
                     child: ListView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        ContainerCourse_Page(),
-                        ContainerCourse_Page(),
-                      ],
+                      children: listCoures
+                          .map((e) => ContainerCourse_Page(
+                                coursesOtd: e,
+                              ))
+                          .toList(),
                     ),
                   ),
                   //Thông báo
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.notifications_active_outlined,
                         color: Color.fromRGBO(0, 99, 163, 1),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
                         "Thông báo",
                         style: GoogleFonts.inter(
-                            color: Color.fromRGBO(0, 99, 163, 1),
+                            color: const Color.fromRGBO(0, 99, 163, 1),
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  ContainerNotification_Page(),
-                  ContainerNotification_Page(),
-                  SizedBox(
+                  const ContainerNotification_Page(),
+                  const ContainerNotification_Page(),
+                  const SizedBox(
                     height: 10,
                   ),
                   //Lịch
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_month_outlined,
                         color: Color.fromRGBO(0, 99, 163, 1),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
                         "Lịch",
                         style: GoogleFonts.inter(
-                            color: Color.fromRGBO(0, 99, 163, 1),
+                            color: const Color.fromRGBO(0, 99, 163, 1),
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
-                      InkWell(child: Icon(Icons.arrow_back_ios)),
+                      const InkWell(child: Icon(Icons.arrow_back_ios)),
                       Text(
                         "25/04",
                         style: GoogleFonts.inter(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromRGBO(0, 0, 0, 1)),
+                            color: const Color.fromRGBO(0, 0, 0, 1)),
                       ),
-                      InkWell(child: Icon(Icons.arrow_forward_ios)),
+                      const InkWell(child: Icon(Icons.arrow_forward_ios)),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   //ContainerCalendar_Page(),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   //Tin tức
@@ -151,17 +175,17 @@ class _Home_PageState extends State<Home_Page> {
                       Container(
                         child: Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.notifications_active_outlined,
                               color: Color.fromRGBO(0, 99, 163, 1),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Text(
                               "Tin tức",
                               style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(0, 99, 163, 1),
+                                  color: const Color.fromRGBO(0, 99, 163, 1),
                                   fontSize: 24,
                                   fontWeight: FontWeight.w700),
                             ),
@@ -176,11 +200,12 @@ class _Home_PageState extends State<Home_Page> {
                               Text(
                                 "Tất cả",
                                 style: GoogleFonts.inter(
-                                    color: Color.fromRGBO(23, 161, 250, 1),
+                                    color:
+                                        const Color.fromRGBO(23, 161, 250, 1),
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.navigate_next,
                                 size: 20,
                                 color: Color.fromRGBO(23, 161, 250, 1),
@@ -191,11 +216,11 @@ class _Home_PageState extends State<Home_Page> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  ContainerNews_Page(),
-                  ContainerNews_Page(),
+                  const ContainerNews_Page(),
+                  const ContainerNews_Page(),
                 ],
               ),
             )

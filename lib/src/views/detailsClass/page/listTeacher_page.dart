@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/controller/teacher.controller.dart';
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 import 'package:sedu_fontend/src/model/otd/teacher.otd.dart';
 import 'package:sedu_fontend/src/model/otd/user/getUser.otd.dart';
-import 'package:sedu_fontend/src/utils/url.dart';
 
 import '../../../controller/getUser.controller.dart';
 
@@ -36,9 +33,9 @@ class _ListTeacher_pageState extends State<ListTeacher_page> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: teacherOtd.isEmpty
           ? Center(
               child: Text(
@@ -73,7 +70,7 @@ class _ContainerStudentState extends State<ContainerStudent> {
     super.initState();
     userController = UserController();
     userController!.getUser(widget.teacherOtd.userId).then((value) {
-      print('${widget.teacherOtd.userId}');
+      print(widget.teacherOtd.userId);
       setState(() {
         userOtd = value;
       });
@@ -85,8 +82,8 @@ class _ContainerStudentState extends State<ContainerStudent> {
   Widget build(BuildContext context) {
     return userOtd != null
         ? Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: const BoxDecoration(
               border: Border(
                 bottom:
                     BorderSide(width: 2, color: Color.fromRGBO(0, 0, 0, 0.5)),
@@ -110,19 +107,19 @@ class _ContainerStudentState extends State<ContainerStudent> {
                 //         width: 30,
                 //         height: 30,
                 //       ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
-                  "${userOtd!.name}",
+                  userOtd!.name,
                   style: GoogleFonts.inter(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Color.fromRGBO(0, 0, 0, 0.8)),
+                      color: const Color.fromRGBO(0, 0, 0, 0.8)),
                 ),
               ],
             ),
           )
-        : CircularProgressIndicator();
+        : const CircularProgressIndicator();
   }
 }

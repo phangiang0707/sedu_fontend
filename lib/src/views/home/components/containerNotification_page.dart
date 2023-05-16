@@ -15,9 +15,9 @@ class _ContainerNotification_PageState
   Widget build(BuildContext context) {
     return Container(
         //height: 90,
-        padding: EdgeInsets.only(bottom: 5),
-        margin: EdgeInsets.only(top: 10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.only(bottom: 5),
+        margin: const EdgeInsets.only(top: 10),
+        decoration: const BoxDecoration(
             border: Border(
                 bottom: BorderSide(color: Color.fromRGBO(23, 161, 250, 0.5)))),
         child: Column(
@@ -29,7 +29,7 @@ class _ContainerNotification_PageState
               style: GoogleFonts.inter(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Color.fromRGBO(0, 0, 0, 1)),
+                  color: const Color.fromRGBO(0, 0, 0, 1)),
             ),
             Container(
               child: Column(
@@ -40,15 +40,15 @@ class _ContainerNotification_PageState
                       style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color.fromRGBO(0, 0, 0, 0.7)),
+                          color: const Color.fromRGBO(0, 0, 0, 0.7)),
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.timer_sharp,
                           size: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
@@ -56,7 +56,7 @@ class _ContainerNotification_PageState
                           style: GoogleFonts.inter(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Color.fromRGBO(0, 0, 0, 0.7)),
+                              color: const Color.fromRGBO(0, 0, 0, 0.7)),
                         )
                       ],
                     )

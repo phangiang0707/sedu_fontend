@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../class/components/containerSearch_page.dart';
 
 class DocumentClass_page extends StatefulWidget {
   const DocumentClass_page({super.key});
@@ -26,18 +23,18 @@ class _DocumentClass_pageState extends State<DocumentClass_page> {
                 Expanded(
                   child: TextFormField(
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: const Icon(Icons.search),
                         hintText: "Tìm kiếm",
                         border: InputBorder.none,
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               width: 1,
                               color: Color.fromRGBO(
                                   23, 161, 250, 1)), //<-- SEE HERE
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               width: 1, color: Color.fromRGBO(23, 161, 250, 1)),
                           borderRadius: BorderRadius.circular(15),
                         )),
@@ -45,18 +42,18 @@ class _DocumentClass_pageState extends State<DocumentClass_page> {
                         fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.filter_alt_outlined,
                       size: 24,
                     ))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             containerPDF(context),
@@ -72,22 +69,22 @@ class _DocumentClass_pageState extends State<DocumentClass_page> {
 
 Widget containerPDF(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10),
+    margin: const EdgeInsets.only(bottom: 10),
     decoration: BoxDecoration(
-        color: Color.fromRGBO(247, 247, 247, 1),
+        color: const Color.fromRGBO(247, 247, 247, 1),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Color.fromRGBO(23, 161, 250, 1),
               blurRadius: 2,
               spreadRadius: 1,
               offset: Offset(2, 1))
         ]),
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     child: Row(
       children: [
         Image.asset('images/pdf.png'),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
@@ -101,22 +98,22 @@ Widget containerPDF(BuildContext context) {
 
 Widget containerVideo(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10),
+    margin: const EdgeInsets.only(bottom: 10),
     decoration: BoxDecoration(
-        color: Color.fromRGBO(247, 247, 247, 1),
+        color: const Color.fromRGBO(247, 247, 247, 1),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Color.fromRGBO(23, 161, 250, 1),
               blurRadius: 2,
               spreadRadius: 1,
               offset: Offset(2, 1))
         ]),
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     child: Row(
       children: [
         Image.asset('images/video.png'),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
@@ -130,22 +127,22 @@ Widget containerVideo(BuildContext context) {
 
 Widget containerMp3(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10),
+    margin: const EdgeInsets.only(bottom: 10),
     decoration: BoxDecoration(
-        color: Color.fromRGBO(247, 247, 247, 1),
+        color: const Color.fromRGBO(247, 247, 247, 1),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Color.fromRGBO(23, 161, 250, 1),
               blurRadius: 2,
               spreadRadius: 1,
               offset: Offset(2, 1))
         ]),
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     child: Row(
       children: [
         Image.asset('images/mp3.png'),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
@@ -159,22 +156,22 @@ Widget containerMp3(BuildContext context) {
 
 Widget containerImage(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10),
+    margin: const EdgeInsets.only(bottom: 10),
     decoration: BoxDecoration(
-        color: Color.fromRGBO(247, 247, 247, 1),
+        color: const Color.fromRGBO(247, 247, 247, 1),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Color.fromRGBO(23, 161, 250, 1),
               blurRadius: 2,
               spreadRadius: 1,
               offset: Offset(2, 1))
         ]),
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     child: Row(
       children: [
         Image.asset('images/image.png'),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sedu_fontend/src/views/home/home_page.dart';
 
 import 'class/class_page.dart';
+import 'home/home_page.dart';
 import 'store/store_page.dart';
+import 'user/user_page.dart';
 
 class MenuBar_Page extends StatefulWidget {
   const MenuBar_Page({super.key});
@@ -23,10 +24,7 @@ class _MenuBar_PageState extends State<MenuBar_Page> {
     ),
     Home_Page(),
     Store_page(),
-    Text(
-      'Index 4: Hồ sơ',
-      style: optionStyle,
-    ),
+    User_page(),
   ];
 
   void _onItemTapped(int index) {
@@ -75,8 +73,8 @@ class _MenuBar_PageState extends State<MenuBar_Page> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO(23, 161, 250, 1),
-        unselectedItemColor: Color.fromRGBO(149, 149, 149, 1),
+        selectedItemColor: const Color.fromRGBO(23, 161, 250, 1),
+        unselectedItemColor: const Color.fromRGBO(149, 149, 149, 1),
         backgroundColor: Colors.white,
         onTap: _onItemTapped,
       ),
