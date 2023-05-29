@@ -108,7 +108,8 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                             color: isSelect == 0
                                                 ? const Color.fromRGBO(
                                                     23, 161, 250, 1)
-                                                : const Color.fromRGBO(0, 0, 0, 0.6)),
+                                                : const Color.fromRGBO(
+                                                    0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     )),
@@ -127,7 +128,8 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                             color: isSelect == 1
                                                 ? const Color.fromRGBO(
                                                     23, 161, 250, 1)
-                                                : const Color.fromRGBO(0, 0, 0, 0.6)),
+                                                : const Color.fromRGBO(
+                                                    0, 0, 0, 0.6)),
                                         textAlign: TextAlign.center,
                                       ),
                                     ))
@@ -139,7 +141,8 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                                 Container(
                                   height: 2,
                                   width: double.infinity,
-                                  color: const Color.fromRGBO(23, 161, 250, 0.6),
+                                  color:
+                                      const Color.fromRGBO(23, 161, 250, 0.6),
                                 ),
                                 isSelect == 0
                                     ? describeText(
@@ -233,8 +236,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
   }
 }
 
-Widget describeText(
-    BuildContext context, String txtTitle, String txtDocument) {
+Widget describeText(BuildContext context, String txtTitle, String txtDocument) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 20),
     width: double.infinity,

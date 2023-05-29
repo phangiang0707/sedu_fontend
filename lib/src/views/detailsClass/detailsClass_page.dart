@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 import 'package:sedu_fontend/src/views/detailsClass/page/generalityClass_page.dart';
 
+import '../../controller/getDetailClass.controller.dart';
+import '../../model/otd/getDetailClass.otd.dart';
 import 'page/lessonClasss_page.dart';
 import 'page/listStudent_page.dart';
 import 'page/listTeacher_page.dart';
@@ -17,20 +19,25 @@ class DetailsClass_Page extends StatefulWidget {
 class _DetailsClass_PageState extends State<DetailsClass_Page> {
   int i = 0;
   int j = 0;
-  // List<Widget> list = [
-  //   GeneralityClass_Page(
-  //     classRoomsOtd: widget.classRoomsOtd,
-  //   ),
-  //   LessonClass_Page(),
-  //   ExerciseClass_Page(),
-  //   DocumentClass_page()
-  // ];
+  GetDetailController? _getDetailController;
+  GetDetailClassOtd? _getDetailClassOtd;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getDetailController = GetDetailController();
+    _getDetailController!.getDetailClass(widget.classRoomsOtd.id).then((value) {
+      _getDetailClassOtd = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Column(children: [
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 5),
             color: const Color.fromRGBO(23, 161, 250, 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,8 +57,24 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
-                const SizedBox(
-                  width: 1,
+                InkWell(
+                  onTap: () {
+                    _getDetailClassOtd!.zaloGroupChatUrl;
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(23, 161, 250, 0.8),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.white)),
+                    child: Text(
+                      "Nhóm chat",
+                      style: GoogleFonts.inter(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
+                  ),
                 )
               ],
             ),

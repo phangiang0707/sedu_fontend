@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sedu_fontend/src/controller/teacher.controller.dart';
+
 import 'package:sedu_fontend/src/model/otd/classRooms.otd.dart';
 import 'package:sedu_fontend/src/model/otd/teacher.otd.dart';
 import 'package:sedu_fontend/src/model/otd/user/getUser.otd.dart';
 
 import '../../../controller/getUser.controller.dart';
+import '../../../controller/teacher.controller.dart';
 
 class ListTeacher_page extends StatefulWidget {
   const ListTeacher_page({super.key, required this.classRoomsOtd});

@@ -17,8 +17,8 @@ class Login_page extends StatefulWidget {
 class _Login_pageState extends State<Login_page> {
   final TextEditingController _txtUser = TextEditingController();
   final TextEditingController _txtPass = TextEditingController();
-  UserControllerr? userControllerr;
   LoginEmailOtd? loginEmailOtd;
+  UserControllerr? _userControllerr;
   bool isEmail(String string) {
     // Null or empty string is invalid
     if (string.isEmpty) {
@@ -38,7 +38,7 @@ class _Login_pageState extends State<Login_page> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    userControllerr = UserControllerr();
+    _userControllerr = UserControllerr();
   }
 
   @override
@@ -146,7 +146,7 @@ class _Login_pageState extends State<Login_page> {
                           InkWell(
                             onTap: () {
                               isEmail(_txtUser.text)
-                                  ? userControllerr!
+                                  ? _userControllerr!
                                       .postUser(_txtUser.text)
                                       .then((value) {
                                       if (value != null) {
