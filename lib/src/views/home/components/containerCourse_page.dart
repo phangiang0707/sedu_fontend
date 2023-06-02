@@ -43,16 +43,19 @@ class _ContainerCourse_PageState extends State<ContainerCourse_Page> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15)),
-                child: widget.coursesOtd.imageUrl == null
-                    ? Image.asset('images/image1.png')
-                    : Image(
-                        image:
-                            NetworkImage('${url}${widget.coursesOtd.imageUrl}'),
-                      )),
+            Container(
+              height: 100,
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  child: widget.coursesOtd.imageUrl == ""
+                      ? Image.asset('images/backgroud.png')
+                      : Image.network(
+                          widget.coursesOtd.imageUrl,
+                          fit: BoxFit.cover,
+                        )),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5),

@@ -25,6 +25,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print(widget.id);
     lessonCourseController = LessonCourseController();
     lessonCourseController!.getLessonCourses(widget.id).then((value) {
       setState(() {
@@ -52,16 +53,16 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                 child: Stack(
                   children: [
                     SizedBox(
+                      height: 200,
                       width: double.infinity,
                       child: detailCoursesOtd!.imageUrl == null
                           ? Image.asset(
                               'images/image1.png',
                               fit: BoxFit.fill,
                             )
-                          : Image(
-                              image: NetworkImage(
-                                  url + detailCoursesOtd!.imageUrl),
-                              fit: BoxFit.fill,
+                          : Image.network(
+                              detailCoursesOtd!.imageUrl,
+                              fit: BoxFit.cover,
                             ),
                     ),
                     Positioned(
@@ -278,6 +279,7 @@ Widget lessonContainer(
             children: lessonCourseOtd
                 .map((e) => ListLessonClass_page(
                       lessonCourseOtd: e,
+                      bool: false,
                     ))
                 .toList())),
   );

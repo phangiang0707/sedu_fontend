@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'login&register/login_page.dart';
@@ -12,6 +13,18 @@ class Dashboard_page extends StatefulWidget {
 }
 
 class _Dashboard_pageState extends State<Dashboard_page> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initialize();
+  }
+
+  void initialize() async {
+    await Future.delayed(Duration(seconds: 2));
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

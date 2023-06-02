@@ -19,6 +19,7 @@ class _LessonClass_PageState extends State<LessonClass_Page> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print(widget.classRoomsOtd.course.id);
     lessonCourseController = LessonCourseController();
     lessonCourseController!
         .getLessonCourses(widget.classRoomsOtd.course.id)
@@ -41,6 +42,7 @@ class _LessonClass_PageState extends State<LessonClass_Page> {
                   .map(
                     (e) => ListLessonClass_page(
                       lessonCourseOtd: e,
+                      bool: true,
                     ),
                   )
                   .toList())),

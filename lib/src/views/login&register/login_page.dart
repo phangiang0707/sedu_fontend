@@ -120,26 +120,28 @@ class _Login_pageState extends State<Login_page> {
                           const SizedBox(
                             height: 20,
                           ),
-                          // TextFormField(
-                          //   controller: _txtUser,
-                          //   decoration: InputDecoration(
-                          //     enabledBorder: OutlineInputBorder(
-                          //       borderSide: BorderSide(
-                          //           width: 1,
-                          //           color: Color.fromRGBO(
-                          //               23, 161, 250, 1)), //<-- SEE HERE
-                          //       borderRadius: BorderRadius.circular(15),
-                          //     ),
-                          //     focusedBorder: OutlineInputBorder(
-                          //       borderSide: BorderSide(
-                          //           width: 1,
-                          //           color: Color.fromRGBO(23, 161, 250, 1)),
-                          //       borderRadius: BorderRadius.circular(15),
-                          //     ),
-                          //     border: OutlineInputBorder(),
-                          //     hintText: "Password",
-                          //   ),
-                          // ),
+                          TextFormField(
+                            controller: _txtPass,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: Color.fromRGBO(
+                                        23, 161, 250, 1)), //<-- SEE HERE
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: Color.fromRGBO(23, 161, 250, 1)),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              labelText: "Password",
+                              border: OutlineInputBorder(),
+                              hintText: "Password",
+                            ),
+                          ),
                           const SizedBox(
                             height: 40,
                           ),
@@ -149,7 +151,8 @@ class _Login_pageState extends State<Login_page> {
                                   ? _userControllerr!
                                       .postUser(_txtUser.text)
                                       .then((value) {
-                                      if (value != null) {
+                                      if (value != null &&
+                                          _txtPass.text == 'admin') {
                                         Provider.of<SponsorModel>(context,
                                                 listen: false)
                                             .getUser(value);

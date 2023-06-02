@@ -17,14 +17,14 @@ class GeneralityClass_Page extends StatefulWidget {
 class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
   CalendarClassController? _calendarClassController;
   List<CalendarClassOtd> listcalendarClassOtd = [];
-  CalendarClassOtd? calendarClassOtd;
+  List<CalendarClassOtd> calendarClassOtd = [];
   int i = 0;
   void checkDay(int j) {
-    calendarClassOtd = null;
+    calendarClassOtd.clear();
     for (var element in listcalendarClassOtd) {
       if (element.day == j) {
         setState(() {
-          calendarClassOtd = element;
+          calendarClassOtd.add(element);
         });
       }
     }
@@ -37,7 +37,7 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
     for (var element in listcalendarClassOtd) {
       if (element.day == 0) {
         setState(() {
-          calendarClassOtd = element;
+          calendarClassOtd.add(element);
         });
       }
     }
@@ -287,13 +287,24 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                   ),
                 ),
                 calendarClassOtd == null
-                    ? const SizedBox(
+                    ? SizedBox(
                         height: 5,
                       )
-                    : ContainerCalendar_Page(
-                        calendarClassOtd: calendarClassOtd!,
-                        name: widget.classRoomsOtd.name,
+                    : Column(
+                        children: calendarClassOtd
+                            .map((e) => ContainerCalendar_Page(
+                                calendarClassOtd: e,
+                                name: widget.classRoomsOtd.name))
+                            .toList(),
                       ),
+                // calendarClassOtd == null
+                //     ? const SizedBox(
+                //         height: 5,
+                //       )
+                //     : ContainerCalendar_Page(
+                //         calendarClassOtd: calendarClassOtd,
+                //         name: widget.classRoomsOtd.name,
+                //       ),
                 // Column(
                 //   children: calendarClassOtd
                 //       .map(

@@ -32,6 +32,8 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
                       id: widget.coursesOtd.id,
                     )));
         print("bbbbbbbbbbbbbbbbbbbbb${widget.coursesOtd.id}");
+
+        print(widget.coursesOtd.imageUrl);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -47,13 +49,19 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
         //height: 185,
         width: 150,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-              child: widget.coursesOtd.imageUrl == null
-                  ? Image.asset('images/backgroud.png')
-                  : Image(
-                      image: NetworkImage(url + widget.coursesOtd.imageUrl))),
+          Container(
+            height: 100,
+            child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
+                child: widget.coursesOtd.imageUrl == ""
+                    ? Image.asset('images/backgroud.png')
+                    : Image.network(
+                        widget.coursesOtd.imageUrl,
+                        fit: BoxFit.cover,
+                      )),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             child: Column(
