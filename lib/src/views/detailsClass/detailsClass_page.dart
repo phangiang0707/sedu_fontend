@@ -23,7 +23,6 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
   String cutUrl = '';
   GetDetailController? _getDetailController;
   GetDetailClassOtd? _getDetailClassOtd;
-  String _zaloUrl = '';
   @override
   void initState() {
     // TODO: implement initState
@@ -32,7 +31,6 @@ class _DetailsClass_PageState extends State<DetailsClass_Page> {
     _getDetailController!.getDetailClass(widget.classRoomsOtd.id).then((value) {
       setState(() {
         _getDetailClassOtd = value;
-        // _zaloUrl = value!.zaloGroupChatUrl;
       });
     });
   }

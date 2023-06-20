@@ -51,6 +51,7 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             height: 100,
+            width: 150,
             child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
@@ -68,11 +69,14 @@ class _ContainerCourse_pageState extends State<ContainerCourse_page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.coursesOtd.name,
-                  style: GoogleFonts.inter(
-                      fontSize: 16, fontWeight: FontWeight.w600),
-                  maxLines: 2,
+                Container(
+                  height: 50,
+                  child: Text(
+                    widget.coursesOtd.name,
+                    style: GoogleFonts.inter(
+                        fontSize: 16, fontWeight: FontWeight.w600),
+                    maxLines: 2,
+                  ),
                 ),
                 SizedBox(
                   height: 5,

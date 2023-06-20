@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContainerTop extends StatefulWidget {
   const ContainerTop({super.key});
@@ -33,7 +34,11 @@ class _ContainerTopState extends State<ContainerTop> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    final uri = Uri.https('sedu-livestream.hmcdat.dev');
+                    launchUrl(uri,
+                        mode: LaunchMode.externalNonBrowserApplication);
+                  },
                   child: Container(
                     child: Column(
                       children: [

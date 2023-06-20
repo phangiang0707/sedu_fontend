@@ -164,7 +164,7 @@ class _DetailCourse_pageState extends State<DetailCourse_page> {
                 alignment: Alignment.center,
                 width: double.infinity,
                 height: 50,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                //padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[

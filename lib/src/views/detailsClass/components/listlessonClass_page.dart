@@ -28,23 +28,26 @@ class _ListLessonClass_pageState extends State<ListLessonClass_page> {
             const SizedBox(
               width: 10,
             ),
-            InkWell(
-              onTap: () {
-                widget.bool == true
-                    ? Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailLessonClass_page(
-                                  lessonCourseOtd: widget.lessonCourseOtd,
-                                )))
-                    : null;
-              },
-              child: Text(
-                widget.lessonCourseOtd.title,
-                style: GoogleFonts.inter(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  widget.bool == true
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailLessonClass_page(
+                                    lessonCourseOtd: widget.lessonCourseOtd,
+                                  )))
+                      : null;
+                },
+                child: Text(
+                  widget.lessonCourseOtd.title,
+                  maxLines: 2,
+                  style: GoogleFonts.inter(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
+                ),
               ),
             )
           ],

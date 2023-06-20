@@ -32,7 +32,7 @@ class _DetailLessonClass_pageState extends State<DetailLessonClass_page> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                 color: const Color.fromRGBO(23, 161, 250, 1),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,12 +45,15 @@ class _DetailLessonClass_pageState extends State<DetailLessonClass_page> {
                           Icons.arrow_back_ios_new_outlined,
                           color: Colors.white,
                         )),
-                    Text(
-                      widget.lessonCourseOtd.title,
-                      style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                    Expanded(
+                      child: Text(
+                        widget.lessonCourseOtd.title,
+                        style: GoogleFonts.inter(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     SizedBox(
                       width: 5,
@@ -77,7 +80,7 @@ class _DetailLessonClass_pageState extends State<DetailLessonClass_page> {
                           text: txtContent,
                           isEnabled: false,
                           controller: controller,
-                          minHeight: 300,
+                          minHeight: 700,
                           hintTextAlign: TextAlign.start,
                           padding: const EdgeInsets.only(left: 10, top: 5),
                           hintTextPadding: EdgeInsets.zero,

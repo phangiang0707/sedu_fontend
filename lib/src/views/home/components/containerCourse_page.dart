@@ -45,6 +45,7 @@ class _ContainerCourse_PageState extends State<ContainerCourse_Page> {
           children: [
             Container(
               height: 100,
+              width: 160,
               child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),

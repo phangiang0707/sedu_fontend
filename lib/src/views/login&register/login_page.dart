@@ -19,6 +19,8 @@ class _Login_pageState extends State<Login_page> {
   final TextEditingController _txtPass = TextEditingController();
   LoginEmailOtd? loginEmailOtd;
   UserControllerr? _userControllerr;
+  String _errorEmail = '';
+  String _errorPassword = '';
   bool isEmail(String string) {
     // Null or empty string is invalid
     if (string.isEmpty) {
@@ -39,6 +41,8 @@ class _Login_pageState extends State<Login_page> {
     // TODO: implement initState
     super.initState();
     _userControllerr = UserControllerr();
+    // _txtUser.text = 'a@gmail.com';
+    // _txtPass.text = 'admin';
   }
 
   @override
@@ -98,23 +102,24 @@ class _Login_pageState extends State<Login_page> {
                           TextFormField(
                             controller: _txtUser,
                             decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(
-                                        23, 161, 250, 1)), //<-- SEE HERE
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(23, 161, 250, 1)),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              labelText: "Email",
-                              border: const OutlineInputBorder(),
-                              hintText: "Email",
-                            ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color.fromRGBO(
+                                          23, 161, 250, 1)), //<-- SEE HERE
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color.fromRGBO(23, 161, 250, 1)),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                labelText: "Email",
+                                border: const OutlineInputBorder(),
+                                hintText: "Email",
+                                errorText:
+                                    _errorEmail.isEmpty ? null : _errorEmail),
                             keyboardType: TextInputType.emailAddress,
                           ),
                           const SizedBox(
@@ -124,29 +129,49 @@ class _Login_pageState extends State<Login_page> {
                             controller: _txtPass,
                             obscureText: true,
                             decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(
-                                        23, 161, 250, 1)), //<-- SEE HERE
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color.fromRGBO(23, 161, 250, 1)),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              labelText: "Password",
-                              border: OutlineInputBorder(),
-                              hintText: "Password",
-                            ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1,
+                                      color: Color.fromRGBO(
+                                          23, 161, 250, 1)), //<-- SEE HERE
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1,
+                                      color: Color.fromRGBO(23, 161, 250, 1)),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                labelText: "Password",
+                                border: OutlineInputBorder(),
+                                hintText: "Password",
+                                errorText: _errorPassword.isEmpty
+                                    ? null
+                                    : _errorPassword),
                           ),
                           const SizedBox(
                             height: 40,
                           ),
                           InkWell(
                             onTap: () {
+                              if (isEmail(_txtUser.text)) {
+                                setState(() {
+                                  _errorEmail = '';
+                                });
+                              } else {
+                                setState(() {
+                                  _errorEmail = 'Email không hợp lệ';
+                                });
+                              }
+                              if (_txtPass.text != 'admin') {
+                                setState(() {
+                                  _errorPassword = "Mật khẩu không hợp lệ";
+                                });
+                              } else {
+                                setState(() {
+                                  _errorPassword = '';
+                                });
+                              }
                               isEmail(_txtUser.text)
                                   ? _userControllerr!
                                       .postUser(_txtUser.text)

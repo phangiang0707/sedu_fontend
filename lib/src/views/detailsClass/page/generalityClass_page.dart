@@ -18,6 +18,7 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
   CalendarClassController? _calendarClassController;
   List<CalendarClassOtd> listcalendarClassOtd = [];
   List<CalendarClassOtd> calendarClassOtd = [];
+  DateTime _dateTime = DateTime.now();
   int i = 0;
   void checkDay(int j) {
     calendarClassOtd.clear();
@@ -34,20 +35,23 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    for (var element in listcalendarClassOtd) {
-      if (element.day == 0) {
-        setState(() {
-          calendarClassOtd.add(element);
-        });
-      }
-    }
+
     _calendarClassController = CalendarClassController();
     _calendarClassController!
         .getCalendarClass(widget.classRoomsOtd.id)
         .then((value) {
       listcalendarClassOtd = value!;
       setState(() {});
+      for (var element in listcalendarClassOtd) {
+        if (element.day == _dateTime.weekday - 1) {
+          setState(() {
+            calendarClassOtd.add(element);
+          });
+        }
+      }
     });
+
+    print(_dateTime.weekday);
   }
 
   @override
@@ -179,7 +183,6 @@ class _GeneralityClass_PageState extends State<GeneralityClass_Page> {
                           setState(() {
                             i = 1;
                           });
-
                           checkDay(i);
                         },
                         child: Container(

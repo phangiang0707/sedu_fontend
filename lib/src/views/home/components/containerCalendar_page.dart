@@ -49,13 +49,13 @@ class _ContainerCalendar_PageState extends State<ContainerCalendar_Page> {
                     ),
                   ]),
             ),
-            Text(
-              "Giáo viên: Phan Trung Giang",
-              style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: const Color.fromRGBO(0, 0, 0, 1)),
-            )
+            // Text(
+            //   "Giáo viên: Phan Trung Giang",
+            //   style: GoogleFonts.inter(
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.w400,
+            //       color: const Color.fromRGBO(0, 0, 0, 1)),
+            // )
           ]),
     );
   }

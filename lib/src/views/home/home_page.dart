@@ -94,8 +94,9 @@ class _Home_PageState extends State<Home_Page> {
                     const SizedBox(
                       height: 10,
                     ),
+
                     SizedBox(
-                      height: 200,
+                      height: 210,
                       child: ListView(
                         physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
